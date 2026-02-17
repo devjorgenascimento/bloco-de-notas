@@ -70,3 +70,13 @@ textarea {
   height: 100px;
   margin-top: 10px;
 }
+
+button {
+  margin-top: 10px;
+  padding: 10px 15px;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
