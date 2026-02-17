@@ -41,7 +41,10 @@ function renderizarNotas() {
     div.style.background = nota.cor;
 
     div.innerHTML = `
-      <h3>${nota.titulo || "Sem título"}</h3>
+      <h3>
+        ${nota.titulo || "Sem título"}
+        ${nota.fixada ? "📌" : ""}
+      </h3>
       <p>${nota.conteudo.substring(0, 60)}...</p>
     `;
 
@@ -106,14 +109,15 @@ excluirBtn.addEventListener("click", () => {
   salvarNoStorage();
   renderizarNotas();
   modal.classList.add("hidden");
+  menuConfig.classList.add("hidden");
   notaAtualId = null;
 });
-
 
 voltarBtn.addEventListener("click", () => {
   salvarNotaAtual();
   renderizarNotas();
   modal.classList.add("hidden");
+  menuConfig.classList.add("hidden");
   notaAtualId = null;
 });
 

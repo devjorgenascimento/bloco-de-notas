@@ -73,7 +73,7 @@ header {
   position: absolute;
   top: 60px;
   right: 15px;
-  background: white;
+  background: rgb(80, 75, 75);
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   display: flex;
@@ -91,7 +91,7 @@ header {
 }
 
 .menu-config button:hover {
-  background: #eee;
+  background: #cce0cd;
 }
 
 textarea {
