@@ -2,6 +2,14 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   background: #f4f4f4;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
 }
 
 header {
@@ -151,5 +159,14 @@ button {
     #ddd 28px
   );
     background-size: 100% 30px;
-};
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+  background: #111;
+  color: #00ff88;
+  font-family: "Courier New", monospace;
+  font-size: 14px;
+}
 
