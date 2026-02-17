@@ -34,8 +34,15 @@ function salvarNoStorage() {
 
 function renderizarNotas() {
   mural.innerHTML = "";
-  notas.sort((a, b) => b.fixada - a.fixada); // Notas fixadas aparecem primeiro
-  notas.forEach(nota => {
+  notas.sort((a, b) => {
+    return (b.fixada === true) - (a.fixada === true);
+  });
+   // Notas fixadas aparecem primeiro
+  const notasOrdenadas = [...notas].sort((a,b) => {
+    return (b.fixada === true) - (a.fixada === true);
+  });
+    
+    notasOrdenadas.forEach(nota => {
     const div = document.createElement("div");
     div.classList.add("postit");
     div.style.background = nota.cor;
@@ -62,6 +69,12 @@ function abrirNota(id) {
 
   modal.style.background = nota.cor;
   modal.classList.remove("hidden");
+
+  if (nota.fixada) {
+  fixarBtn.textContent = "📌 Desfixar nota";
+    } else {
+    fixarBtn.textContent = "📌 Fixar nota";
+    }
 }
 
 function salvarNotaAtual() {
@@ -94,8 +107,9 @@ fixarBtn.addEventListener("click", () => {
   const nota = notas.find(n => n.id === notaAtualId);
   nota.fixada = !nota.fixada;
 
-  menuConfig.classList.add("hidden");
-
+    fixarBtn.textContent = nota.fixada 
+    ? "📌 Desfixar nota"
+    : "📌 Fixar nota";
   salvarNoStorage();
   renderizarNotas();
 
