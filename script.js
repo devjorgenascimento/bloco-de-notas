@@ -2,6 +2,12 @@ const mural = document.getElementById("mural");
 const modal = document.getElementById("modal");
 const novaNotaBtn = document.getElementById("novaNota");
 const voltarBtn = document.getElementById("voltarBtn");
+const configBtn = document.getElementById("configBtn");
+const menuConfig = document.getElementById("menuConfig");
+const mudarCorBtn = document.getElementById("mudarCorBtn");
+const fixarBtn = document.getElementById("fixarBtn");
+const excluirBtn = document.getElementById("excluirBtn");
+
 
 const tituloInput = document.getElementById("tituloInput");
 const conteudoInput = document.getElementById("conteudoInput");
@@ -28,7 +34,7 @@ function salvarNoStorage() {
 
 function renderizarNotas() {
   mural.innerHTML = "";
-
+  notas.sort((a, b) => b.fixada - a.fixada); // Notas fixadas aparecem primeiro
   notas.forEach(nota => {
     const div = document.createElement("div");
     div.classList.add("postit");
@@ -65,6 +71,45 @@ function salvarNotaAtual() {
   salvarNoStorage();
 }
 
+configBtn.addEventListener("click", () => {
+  menuConfig.classList.toggle("hidden");
+});
+
+mudarCorBtn.addEventListener("click", () => {
+  const nota = notas.find(n => n.id === notaAtualId);
+  nota.cor = pegarCorAleatoria();
+
+  modal.style.background = nota.cor;
+
+  menuConfig.classList.add("hidden");
+
+  salvarNoStorage();
+  renderizarNotas();
+});
+
+fixarBtn.addEventListener("click", () => {
+  const nota = notas.find(n => n.id === notaAtualId);
+  nota.fixada = !nota.fixada;
+
+  menuConfig.classList.add("hidden");
+
+  salvarNoStorage();
+  renderizarNotas();
+
+});
+
+excluirBtn.addEventListener("click", () => {
+  if (!confirm("Excluir esta nota?")) return;
+
+  notas = notas.filter(n => n.id !== notaAtualId);
+
+  salvarNoStorage();
+  renderizarNotas();
+  modal.classList.add("hidden");
+  notaAtualId = null;
+});
+
+
 voltarBtn.addEventListener("click", () => {
   salvarNotaAtual();
   renderizarNotas();
@@ -77,7 +122,8 @@ novaNotaBtn.addEventListener("click", () => {
     id: Date.now(),
     titulo: "",
     conteudo: "",
-    cor: pegarCorAleatoria()
+    cor: pegarCorAleatoria(),
+    fixada: false
   };
 
   notas.push(novaNota);

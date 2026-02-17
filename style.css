@@ -69,6 +69,31 @@ header {
   display: none !important;
 }
 
+.menu-config {
+  position: absolute;
+  top: 60px;
+  right: 15px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  z-index: 1000;
+}
+
+.menu-config button {
+  background: none;
+  border: none;
+  padding: 10px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.menu-config button:hover {
+  background: #eee;
+}
+
 textarea {
   width: 100%;
   height: 100px;
