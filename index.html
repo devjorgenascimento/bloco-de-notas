@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bloco de Notas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>🗒️ Bloco de Notas</h1>
+    <button id="novaNota">+ Nova Nota</button>
+  </header>
+
+  <main id="mural"></main>
+
+  <!-- Modal -->
+  <div id="modal" class="hidden">
+    <div class="modal-content">
+      <input type="text" id="tituloInput" placeholder="Título">
+      <textarea id="conteudoInput" placeholder="Escreva sua nota..."></textarea>
+      <div class="acoes">
+        <button id="salvarNota">Salvar</button>
+        <button id="fecharModal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
