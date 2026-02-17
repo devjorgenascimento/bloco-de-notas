@@ -21,12 +21,17 @@ header {
 }
 
 .postit {
+  aspect-ratio: 1 / 1; /* quadrado perfeito */
   background: #fffa91;
   padding: 15px;
-  border-radius: 8px;
+  border-radius: 12px;
   cursor: pointer;
-  box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
-  transition: transform 0.2s;
+  box-shadow: 4px 4px 12px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
 }
 
 .postit:hover {
@@ -47,22 +52,21 @@ header {
 #modal {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.6);
+  background: white;
   display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.hidden {
-  display: none !important;
+  flex-direction: column;
+  z-index: 999;
 }
 
 .modal-content {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  width: 90%;
-  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+
+.hidden {
+  display: none !important;
 }
 
 textarea {
@@ -79,4 +83,46 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.nota-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  background: #222;
+  color: white;
+}
+
+.nota-header button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+}
+
+#tituloInput {
+  font-size: 22px;
+  border: none;
+  outline: none;
+  padding: 15px;
+  font-weight: bold;
+}
+
+#conteudoInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  resize: none;
+  padding: 20px;
+  font-size: 18px;
+  line-height: 28px;
+
+  /* linhas de caderno */
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 27px,
+    #ddd 28px
+  );
 }
